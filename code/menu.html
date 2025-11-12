@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Palace - Menu</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart') || "[]");
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.quantity += 1;
+            } else {
+                cart.push({name, price, quantity: 1});
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+    </script>
+</head>
+<body style="background-image: url(Buffet.jpg); text-align: center;
+ background-size: cover; background-position: center; height: 100vh; margin: 0; font-size: x-large; 
+ color: rgb(5, 234, 204);">
+    <header>
+        <h1>Pizza Palace</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Log In</a>
+            <a href="checkout.html">Checkout</a>
+        </nav>
+    </header>
+    <main>
+        <section class="menu">
+            <h2>Our Menu</h2>
+            <div class="menu-items">
+                <div class="item">
+                    <h3>Margherita Pizza</h3>
+                    <p>Classic tomato sauce, mozzarella, fresh basil</p>
+                    <strong>$10.99</strong>
+                    <button onclick="addToCart('Margherita Pizza', 10.99)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>Pepperoni Pizza</h3>
+                    <p>Pepperoni, mozzarella, tomato sauce</p>
+                    <strong>$12.49</strong>
+                    <button onclick="addToCart('Pepperoni Pizza', 12.49)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>BBQ Chicken Pizza</h3>
+                    <p>Grilled chicken, BBQ sauce, red onions, cilantro</p>
+                    <strong>$13.99</strong>
+                    <button onclick="addToCart('BBQ Chicken Pizza', 13.99)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>Veggie Delight</h3>
+                    <p>Bell peppers, olives, onions, mushrooms, mozzarella</p>
+                    <strong>$11.99</strong>
+                    <button onclick="addToCart('Veggie Delight', 11.99)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>Hawaiian Pizza</h3>
+                    <p>Ham, pineapple, mozzarella, tomato sauce</p>
+                    <strong>$12.99</strong>
+                    <button onclick="addToCart('Hawaiian Pizza', 12.99)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>Spicy Buffalo Pizza</h3>
+                    <p>Buffalo chicken, red onions, ranch drizzle</p>
+                    <strong>$13.49</strong>
+                    <button onclick="addToCart('Spicy Buffalo Pizza', 13.49)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>Cheesy Breadsticks</h3>
+                    <p>Baked breadsticks topped with mozzarella</p>
+                    <strong>$5.49</strong>
+                    <button onclick="addToCart('Cheesy Breadsticks', 5.49)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>Caesar Salad</h3>
+                    <p>Romaine, croutons, parmesan, Caesar dressing</p>
+                    <strong>$6.99</strong>
+                    <button onclick="addToCart('Caesar Salad', 6.99)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>Chocolate Lava Cake</h3>
+                    <p>Warm chocolate cake with gooey center</p>
+                    <strong>$4.99</strong>
+                    <button onclick="addToCart('Chocolate Lava Cake', 4.99)">Add to Cart</button>
+                </div>
+                <div class="item">
+                    <h3>Bottle of Soda</h3>
+                    <p>Choice of cola, lemon-lime, or orange</p>
+                    <strong>$2.00</strong>
+                    <button onclick="addToCart('Bottle of Soda', 2.00)">Add to Cart</button>
+                </div>
+            </div>
+            <a class="button" href="checkout.html">Go to Checkout</a>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Pizza Palace. All Rights Reserved.
+    </footer>
+</body>
+</html>

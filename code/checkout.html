@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Palace - Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart') || "[]");
+            let cartList = document.getElementById("cart-items");
+            let total = 0;
+            cartList.innerHTML = "";
+            cart.forEach(item => {
+                let li = document.createElement("li");
+                let itemTotal = (item.price * item.quantity).toFixed(2);
+                li.textContent = `${item.name} x ${item.quantity} - $${itemTotal}`;
+                cartList.appendChild(li);
+                total += item.price * item.quantity;
+            });
+            document.getElementById("total").textContent = total.toFixed(2);
+            document.getElementById("place-order-btn").disabled = cart.length === 0;
+        }
+        function placeOrder() {
+            localStorage.removeItem('cart');
+            window.location.href = "confirmation.html";
+        }
+        window.onload = loadCart;
+    </script>
+</head>
+<body style="background-image: url(pizza\ 1.jpg); text-align: center; font-size: x-large;
+ background-size: cover; background-position: center; height: 100vh; margin: 0; color: rgb(6, 5, 5);font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    <header>
+        <h1>Pizza Palace</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="login.html">Log In</a>
+        </nav>
+    </header>
+    <main>
+        <section class="checkout">
+            <h2>Checkout</h2>
+            <ul id="cart-items"></ul>
+            <p><strong>Total: $<span id="total"></span></strong></p>
+            <button id="place-order-btn" onclick="placeOrder()">Place Order</button>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Pizza Palace. All Rights Reserved.
+    </footer>
+</body>
+</html>
